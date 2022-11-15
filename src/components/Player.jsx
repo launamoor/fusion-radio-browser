@@ -76,7 +76,7 @@ const Player = function () {
       )}
       <LogoMain />
       <div className="text-xl font-light mb-4">Now Live</div>
-      <div className="text-3xl font-bold tracking-wide text-gradient mb-14 sm:mb-8">
+      <div className="text-3xl font-bold tracking-wide text-gradient mb-14 sm:mb-8 text-center">
         {currentRadio.name || " "}
       </div>
       <PlayerContainer />
