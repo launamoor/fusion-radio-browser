@@ -1,13 +1,102 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(hsl(var(--p)), hsl(var(--s)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.text-gradient-dark {
+  background: -webkit-linear-gradient(hsl(var(--p)), hsl(var(--n)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-item {
+  padding: 1rem 3rem;
+
+  position: relative;
+  z-index: 10;
+
+  transition: all 0.3s ease-in;
+}
+
+.menu-item:hover {
+  color: hsl(var(--a));
+}
+
+.menu-item::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 3px;
+  background-image: linear-gradient(to right, hsl(var(--p)), hsl(var(--s)));
+  transform: scaleY(0) skewX(0);
+  opacity: 0.2;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transition: transform 0.15s ease-in, width 0.3s ease-in 0.2s;
+}
+
+.menu-item:hover::after {
+  transform: scaleY(1) skewX(-2deg);
+  width: 100%;
+}
+
+.sidebar-closed {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.popup {
+  animation: popup 3s ease-in-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes popup {
+  0% {
+    opacity: 0;
+    transform: translateY(250%);
+  }
+  30%,
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(250%);
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media only screen and (max-width: 30em) {
+  html {
+    font-size: 60%;
+  }
+  .header {
+    margin-bottom: 10rem;
+  }
 }
