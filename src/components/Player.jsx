@@ -48,7 +48,7 @@ const Player = function () {
       return (
         <Popup
           success={popupType.type}
-          className="fixed bottom-8 left-12 popup flex items-center gap-4"
+          className="fixed bottom-8 left-4 popup flex items-center gap-4"
         >
           {popupType.message}
         </Popup>
