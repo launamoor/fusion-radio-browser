@@ -36,7 +36,6 @@ export const RadioBrowserProvider = function ({ children }) {
       "https://de1.api.radio-browser.info/json/stations/search?hidebroken=true?&is_https=true"
     );
     const data = await response.json();
-    console.log(data);
     setAllStations(data);
     setDataLoaded(true);
   };
