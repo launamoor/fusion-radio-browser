@@ -63,15 +63,6 @@ const Player = function () {
 
   return (
     <div className="container mx-auto bg-neutral rounded-md py-18 p-8 flex flex-col items-center justify-center shadow-xl relative">
-      <button
-        onClick={() => {
-          console.log("local", stations);
-          console.log("current", currentRadio);
-        }}
-        className="btn btn-primary"
-      >
-        BTN
-      </button>
       <h1 className="text-3xl font-bold text-gradient self-start mb-24 sm:mb-12">
         Fusion Online
       </h1>
