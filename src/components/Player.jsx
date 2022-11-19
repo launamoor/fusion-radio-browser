@@ -23,7 +23,6 @@ const Player = function () {
   const handleSaveRadio = () => {
     // Check if radio is in local storage
     if (stations?.some((station) => station.uuid === currentRadio.uuid)) {
-      console.log("includes");
       setStations(() =>
         stations.filter((station) => station.uuid !== currentRadio.uuid)
       );
