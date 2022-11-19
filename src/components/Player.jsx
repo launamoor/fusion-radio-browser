@@ -21,7 +21,9 @@ const Player = function () {
   } = useContext(RadioBrowserContext);
 
   const handleSaveRadio = () => {
-    if (stations?.includes(currentRadio)) {
+    // Check if radio is in local storage
+    if (stations?.some((station) => station.uuid === currentRadio.uuid)) {
+      console.log("includes");
       setStations(() =>
         stations.filter((station) => station.uuid !== currentRadio.uuid)
       );
@@ -32,15 +34,18 @@ const Player = function () {
         isFinished: false,
       });
     }
-    if (stations?.some((station) => station.uuid === currentRadio.uuid)) return;
+    // Make btn not work if theres not current radio
+    if (!currentRadio.uuid) return;
 
-    setStations(stations ? [...stations, currentRadio] : [currentRadio]);
-    setPopupType({
-      type: "success",
-      message: "Added to saved list!",
-      isTriggered: true,
-      isFinished: false,
-    });
+    if (!stations?.some((station) => station.uuid === currentRadio.uuid)) {
+      setStations(stations ? [...stations, currentRadio] : [currentRadio]);
+      setPopupType({
+        type: "success",
+        message: "Added to saved list!",
+        isTriggered: true,
+        isFinished: false,
+      });
+    }
   };
 
   const renderPopup = () => {
@@ -58,6 +63,15 @@ const Player = function () {
 
   return (
     <div className="container mx-auto bg-neutral rounded-md py-18 p-8 flex flex-col items-center justify-center shadow-xl relative">
+      <button
+        onClick={() => {
+          console.log("local", stations);
+          console.log("current", currentRadio);
+        }}
+        className="btn btn-primary"
+      >
+        BTN
+      </button>
       <h1 className="text-3xl font-bold text-gradient self-start mb-24 sm:mb-12">
         Fusion Online
       </h1>
