@@ -17,7 +17,7 @@ const SearchResults = function () {
       )}
       {allStations
         .filter((station) =>
-          typing.length < 3
+          typing.trim().length < 3
             ? ""
             : station.name.toLowerCase().includes(typing.toLowerCase())
         )
