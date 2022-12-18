@@ -4,6 +4,7 @@ import Sidebar from "./components/layout/Sidebar";
 import About from "./components/pages/About";
 import Search from "./components/pages/Search";
 import Saved from "./components/pages/Saved";
+import NotFound from "./components/pages/NotFound";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/search" element={<Search />}></Route>
                 <Route path="/saved" element={<Saved />}></Route>
                 <Route path="/about" element={<About />}></Route>
+                <Route path="/*" element={<NotFound />}></Route>
               </Routes>
             </Sidebar>
           </div>
