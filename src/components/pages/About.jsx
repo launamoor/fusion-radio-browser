@@ -8,7 +8,7 @@ const About = function () {
         A React App to search Radio Stations and listen to music from all over
         the world. <br /> This project is part of the personal portfolio of{" "}
         <a
-          href="https://port1424.netlify.app/"
+          href="https://bartjozef.com"
           target="_blank"
           rel="noreferrer"
           className="link link-accent font-semibold transition-all"
@@ -24,7 +24,7 @@ const About = function () {
         Layout by: 
         <span>
           <a
-            href="https://port1424.netlify.app/"
+            href="https://bartjozef.com"
             target="_blank"
             rel="noreferrer"
             className="link link-accent font-semibold transition-all"
