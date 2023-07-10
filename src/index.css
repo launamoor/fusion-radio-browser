@@ -1,9 +1,17 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -30,6 +38,10 @@ body {
   position: relative;
   z-index: 10;
 
+  -webkit-transition: all 0.3s ease-in;
+
+  -o-transition: all 0.3s ease-in;
+
   transition: all 0.3s ease-in;
 }
 
@@ -42,8 +54,12 @@ body {
   display: block;
   height: 100%;
   width: 3px;
+  background-image: -webkit-gradient(linear, left top, right top, from(hsl(var(--p))), to(hsl(var(--s))));
+  background-image: -o-linear-gradient(left, hsl(var(--p)), hsl(var(--s)));
   background-image: linear-gradient(to right, hsl(var(--p)), hsl(var(--s)));
-  transform: scaleY(0) skewX(0);
+  -webkit-transform: scaleY(0) skewX(0);
+      -ms-transform: scaleY(0) skewX(0);
+          transform: scaleY(0) skewX(0);
   opacity: 0.2;
 
   position: absolute;
@@ -51,38 +67,74 @@ body {
   left: 0;
   z-index: -1;
 
+  -webkit-transition: width 0.3s ease-in 0.2s, -webkit-transform 0.15s ease-in;
+
+  transition: width 0.3s ease-in 0.2s, -webkit-transform 0.15s ease-in;
+
+  -o-transition: transform 0.15s ease-in, width 0.3s ease-in 0.2s;
+
   transition: transform 0.15s ease-in, width 0.3s ease-in 0.2s;
+
+  transition: transform 0.15s ease-in, width 0.3s ease-in 0.2s, -webkit-transform 0.15s ease-in;
 }
 
 .menu-item:hover::after {
-  transform: scaleY(1) skewX(-2deg);
+  -webkit-transform: scaleY(1) skewX(-2deg);
+      -ms-transform: scaleY(1) skewX(-2deg);
+          transform: scaleY(1) skewX(-2deg);
   width: 100%;
 }
 
 .sidebar-closed {
-  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
   opacity: 0;
   visibility: hidden;
 }
 
 .popup {
-  animation: popup 3s ease-in-out;
-  animation-fill-mode: backwards;
+  -webkit-animation: popup 3s ease-in-out;
+          animation: popup 3s ease-in-out;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+@-webkit-keyframes popup {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%);
+  }
+  30%,
+  50% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    opacity: 0.2;
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%);
+  }
 }
 
 @keyframes popup {
   0% {
     opacity: 0;
-    transform: translateY(250%);
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%);
   }
   30%,
   50% {
     opacity: 1;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
   100% {
     opacity: 0.2;
-    transform: translateY(250%);
+    -webkit-transform: translateY(250%);
+            transform: translateY(250%);
   }
 }
 
