@@ -11,7 +11,7 @@ const Sidebar = function ({ className, toggleSidebar, children }) {
         onClick={toggleSidebar}
         className="btn btn-ghost self-end mb-4 mt-4 mr-10 absolute top-6 right-0 z-20"
       >
-        <FaArrowRight className="text-xl text-error" />
+        <FaArrowRight className="text-3xl xs:text-xl text-error" />
       </Button>
       <Menu />
       {children}
