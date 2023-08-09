@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 const Sidebar = function ({ className, toggleSidebar, children }) {
   return (
     <aside
-      className={`${className} flex flex-col items-center py-8 px-4 bg-neutral border-l border-base-100 w-2/3 md:w-1/2 lg:w-1/3 2xl:w-1/4 transition-all overflow-y-scroll`}
+      className={`${className} flex flex-col items-center py-8 px-4 bg-neutral border-l border-base-100 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 2xl:w-1/4 transition-all overflow-y-scroll`}
     >
       <Button
         onClick={toggleSidebar}
