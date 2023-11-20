@@ -1,4 +1,4 @@
-import logofav from "../../assets/fusionfav.png";
+import logofav from "../../assets/fusionfav-square.png";
 
 const LogoMain = function () {
   return (
