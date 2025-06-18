@@ -37,6 +37,22 @@ const PlayerContainer = function () {
     setPlaying(false);
   };
 
+  const handleStreamError = () => {
+    console.warn("Stream issue detected. Attempting to restart...");
+    setPlaying(false);
+    setIsLoading(true);
+
+    // Retry after delay
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.load(); // Reload
+        audioRef.current.play().catch((err) => {
+          console.error("Auto-replay failed: ", err);
+        });
+      }
+    }, 2000);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center mb-12">
       <VolumeBar
@@ -57,6 +73,9 @@ const PlayerContainer = function () {
         onPlaying={() => setPlaying(true)}
         onLoadStart={() => setIsLoading(true)}
         onCanPlay={() => setIsLoading(false)}
+        onStalled={handleStreamError}
+        onEnded={handleStreamError}
+        onError={handleStreamError}
         autoPlay
       ></audio>
     </div>

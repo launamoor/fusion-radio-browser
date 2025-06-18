@@ -29,7 +29,7 @@ const SearchItem = function ({
       name={name}
       className="flex flex-col mb-6 glass p-2 rounded-lg hover:opacity-90 transition-all active:scale-95"
     >
-      <h3 className="text-lg font-bold">{name.slice(0, 26)}</h3>
+      <h3 className="text-lg font-bold text-left">{name.slice(0, 26)}</h3>
       <div className="flex items-center justify-start gap-2">
         <div className="badge badge-success flex items-center justify-start gap-2">
           <FaPlay />

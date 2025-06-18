@@ -5,11 +5,14 @@ const RadioBrowserContext = createContext();
 
 export const RadioBrowserProvider = function ({ children }) {
   const [typing, setTyping] = useState("");
+  const [typingSpotify, setTypingSpotify] = useState("");
   const [allStations, setAllStations] = useState([]);
+  const [filteredStations, setFilteredStations] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("");
   const [currentRadio, setCurrentRadio] = useState({});
   const [playing, setPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(true);
   const [localRadios, setlocalRadios] = useState([]);
   const [stations, setStations] = useLocalStorage("stations", []);
   const [popupType, setPopupType] = useState({
@@ -40,9 +43,51 @@ export const RadioBrowserProvider = function ({ children }) {
     setDataLoaded(true);
   };
 
+  const getStationByInput = async () => {
+    try {
+      if (typing.length < 3 || typing.toLowerCase().startsWith("rad")) {
+        setFilteredStations([]);
+        setDataLoaded(false);
+        return;
+      } else {
+        setDataLoaded(false);
+        const response = await fetch(
+          `https://de1.api.radio-browser.info/json/stations/search?hidebroken=true?&is_https=true&name=${typing}`
+        );
+        const data = await response.json();
+        setFilteredStations(data);
+        setDataLoaded(true);
+      }
+    } catch (error) {
+      console.error("Something went wrong: \n" + error);
+    }
+  };
+
+  const getStationsByGenre = async () => {
+    try {
+      setDataLoaded(false);
+      const response = await fetch(
+        `https://de1.api.radio-browser.info/json/stations/bytag/${selectedGenre}?hidebroken=true&is_https=true&limit=40&order=votes&reverse=true`
+      );
+      const data = await response.json();
+      setFilteredStations(data);
+      setDataLoaded(true);
+    } catch (error) {
+      console.error("Something went wrong: \n" + error);
+    }
+  };
+
   useEffect(() => {
-    getAllStations();
-  }, []);
+    getStationByInput();
+  }, [typing]);
+
+  useEffect(() => {
+    if (!selectedGenre) {
+      return;
+    } else {
+      getStationsByGenre();
+    }
+  }, [selectedGenre]);
 
   return (
     <RadioBrowserContext.Provider
@@ -63,6 +108,11 @@ export const RadioBrowserProvider = function ({ children }) {
         setStations,
         popupType,
         setPopupType,
+        filteredStations,
+        selectedGenre,
+        setSelectedGenre,
+        typingSpotify,
+        setTypingSpotify,
       }}
     >
       {children}
