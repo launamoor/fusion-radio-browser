@@ -17,7 +17,7 @@ const Sidebar = function ({ className, toggleSidebar, children }) {
       {children}
       <footer className="footer footer-center p-4 bg-base-300 text-base-content mt-auto rounded-lg">
         <div className="text-xs font-light opacity-75">
-          <p>Fusion Online 2022 - Bartosz Jozefowicz</p>
+          <p>Fusion Online 2025 - Bartosz Jozefowicz</p>
         </div>
       </footer>
     </aside>

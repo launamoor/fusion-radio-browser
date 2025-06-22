@@ -12,7 +12,9 @@ const SavedStationItem = function ({ station, onClick }) {
       name={station.name}
       className="flex flex-col mb-6 glass p-2 rounded-lg hover:opacity-90 transition-all active:scale-95"
     >
-      <h3 className="text-lg font-bold">{station.name.slice(0, 26)}</h3>
+      <h3 className="text-lg font-bold text-start">
+        {station.name.slice(0, 26)}
+      </h3>
       <div className="flex items-center justify-start gap-2">
         <div className="badge badge-success flex items-center justify-start gap-2">
           <FaPlay />

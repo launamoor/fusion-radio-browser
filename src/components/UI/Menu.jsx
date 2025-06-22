@@ -1,11 +1,5 @@
 import MenuItem from "../MenuItem";
-import {
-  FaHome,
-  FaSearch,
-  FaInfoCircle,
-  FaGripVertical,
-  FaItunesNote,
-} from "react-icons/fa";
+import { FaHome, FaSearch, FaInfoCircle, FaGripVertical } from "react-icons/fa";
 import { BsHeadphones } from "react-icons/bs";
 
 const Menu = function () {
@@ -31,13 +25,6 @@ const Menu = function () {
       >
         <FaGripVertical className="text-4xl sm:text-3xl text-current" />
         <span>Genres</span>
-      </MenuItem>
-      <MenuItem
-        to="/login"
-        className="flex items-start justify-start xs:justify-start gap-20 menu-item text-3xl sm:text-xl font-semibold"
-      >
-        <FaItunesNote className="text-4xl sm:text-3xl text-current" />
-        <span>Songs</span>
       </MenuItem>
       <MenuItem
         to="/saved"

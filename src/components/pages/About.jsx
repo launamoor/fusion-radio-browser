@@ -18,7 +18,7 @@ const About = function () {
         .
       </p>
       <p className="text-md px-4">
-        Version <span className="text-accent font-semibold">1.0.5</span>
+        Version <span className="text-accent font-semibold">1.2.1</span>
       </p>
       <p className="text-md px-4">
         Layout by: 

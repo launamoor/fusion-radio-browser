@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import SearchItem from "./SearchItem";
 import RadioBrowserContext from "../context/RadioBrowserContext";
-import { FaSpinner } from "react-icons/fa";
 
 const SearchResults = function () {
   const { typing, filteredStations } = useContext(RadioBrowserContext);

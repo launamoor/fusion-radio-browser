@@ -3,8 +3,6 @@ import Main from "./components/layout/Main";
 import Sidebar from "./components/layout/Sidebar";
 import About from "./components/pages/About";
 import Genres from "./components/pages/Genres";
-import Songs from "./components/pages/Songs";
-import SpotifyLogin from "./components/SpotifyLogin";
 import Search from "./components/pages/Search";
 import Saved from "./components/pages/Saved";
 import NotFound from "./components/pages/NotFound";
@@ -40,8 +38,6 @@ function App() {
                 <Route path="/" element={""}></Route>
                 <Route path="/search" element={<Search />}></Route>
                 <Route path="/genres" element={<Genres />}></Route>
-                <Route path="/login" element={<SpotifyLogin />}></Route>
-                <Route path="/songs" element={<Songs />}></Route>
                 <Route path="/saved" element={<Saved />}></Route>
                 <Route path="/about" element={<About />}></Route>
                 <Route path="/*" element={<NotFound />}></Route>

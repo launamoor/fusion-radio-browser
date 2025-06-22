@@ -6,7 +6,6 @@ const RadioBrowserContext = createContext();
 export const RadioBrowserProvider = function ({ children }) {
   const [typing, setTyping] = useState("");
   const [typingSpotify, setTypingSpotify] = useState("");
-  const [allStations, setAllStations] = useState([]);
   const [filteredStations, setFilteredStations] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [currentRadio, setCurrentRadio] = useState({});
@@ -34,14 +33,14 @@ export const RadioBrowserProvider = function ({ children }) {
     return () => clearTimeout(timer);
   }, [popupType]);
 
-  const getAllStations = async () => {
-    const response = await fetch(
-      "https://de1.api.radio-browser.info/json/stations/search?hidebroken=true?&is_https=true"
-    );
-    const data = await response.json();
-    setAllStations(data);
-    setDataLoaded(true);
-  };
+  // const getAllStations = async () => {
+  //   const response = await fetch(
+  //     "https://de1.api.radio-browser.info/json/stations/search?hidebroken=true?&is_https=true"
+  //   );
+  //   const data = await response.json();
+  //   setAllStations(data);
+  //   setDataLoaded(true);
+  // };
 
   const getStationByInput = async () => {
     try {
@@ -79,6 +78,7 @@ export const RadioBrowserProvider = function ({ children }) {
 
   useEffect(() => {
     getStationByInput();
+    // eslint-disable-next-line
   }, [typing]);
 
   useEffect(() => {
@@ -87,6 +87,7 @@ export const RadioBrowserProvider = function ({ children }) {
     } else {
       getStationsByGenre();
     }
+    // eslint-disable-next-line
   }, [selectedGenre]);
 
   return (
@@ -94,7 +95,6 @@ export const RadioBrowserProvider = function ({ children }) {
       value={{
         typing,
         setTyping,
-        allStations,
         currentRadio,
         setCurrentRadio,
         playing,
